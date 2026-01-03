@@ -12,9 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TrackActivity {
+	private String userId;
+	private Integer duration;
 	private Integer caloriesBurned;
+	private Map<String,Object> additionalMetrics;
 	private LocalDateTime startTime;
-	
 	private ActivityType type;
 //	private String id; created for testing api 
 

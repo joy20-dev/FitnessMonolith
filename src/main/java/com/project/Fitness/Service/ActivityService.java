@@ -18,24 +18,26 @@ import lombok.RequiredArgsConstructor;
 public class ActivityService {
 	
 	private final ActivityRepository activityRepo;
-//	private final UserRepository userRepo;
+	private final UserRepository userRepo;
 
 	public ActivityResponse track(TrackActivity trackActivity) {
 		// TODO Auto-generated method stub
-//		Users user = userRepo.findById(trackActivity.getId()).orElseThrow(); created for testing the api
+		Users user = userRepo.findById(trackActivity.getId()).orElseThrow(() -> new RunTimeException("user not found"));  //created for testing the api
 		Activity act = Activity.builder()
+				.duration(trackActivity.getDuration())
 				.caloriesBurned(trackActivity.getCaloriesBurned())
 				.startTime(trackActivity.getStartTime())
 				.type(trackActivity.getType())
-//				.user(user) need to get logged in user from security context after adding spring security
+				.user(user)  // need to get logged in user from security context after adding spring security
 				.build();
-		 activityRepo.save(act);
-		 return mappedToResponse(act);
+		 Activity savedAct = activityRepo.save(act);
+		 return mappedToResponse(savedAct);
 	}
 
 	private ActivityResponse mappedToResponse(Activity activity) {
 		// TODO Auto-generated method stub
 		ActivityResponse response = ActivityResponse.builder()
+				.duration(activity.getDuration())
 				.caloriesBurned(activity.getCaloriesBurned())
 				.startTime(activity.getStartTime())
 				.createdAt(activity.getCreatedAt())

@@ -15,7 +15,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ActivityResponse {
+	private String userId;
 	private Integer caloriesBurned;
+	private Integer duration;
 	private LocalDateTime startTime;
 	private LocalDateTime createdAt;
 	private LocalDateTime updateAt;

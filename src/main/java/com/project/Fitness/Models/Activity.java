@@ -42,6 +42,7 @@ public class Activity {
 	@GeneratedValue(strategy =GenerationType.UUID)
 	private  String id;
 	private Integer caloriesBurned;
+	private Integer duration;
 	
 	
 	private LocalDateTime startTime;
