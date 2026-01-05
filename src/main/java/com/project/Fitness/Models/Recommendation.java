@@ -68,6 +68,9 @@ public class Recommendation {
 	@JoinColumn(name ="activity_id" ,nullable = false , foreignKey = @ForeignKey(name ="fk_recommendation_activity"))
 	@JsonIgnore
 	private Activity activity;
+
+	
+	
 	
 
 }

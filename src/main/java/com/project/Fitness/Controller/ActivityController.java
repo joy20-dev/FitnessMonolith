@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,8 +26,8 @@ public class ActivityController {
 	private final ActivityService activityService;
 	
 	@GetMapping("/fetch")
-	public ResponseEntity<List<ActivityResponse>> fetchActivities(){
-		return ResponseEntity.ok(activityService.fetchActivities());
+	public ResponseEntity<List<ActivityResponse>> fetchActivities(@RequestHeader(value="X-USER-ID") String userId ){
+		return ResponseEntity.ok(activityService.fetchActivities(userId));
 	}
 	
 	@PostMapping("/track")
