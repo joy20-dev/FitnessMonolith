@@ -23,11 +23,13 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Builder;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Recommendation {
 	
 	@Id

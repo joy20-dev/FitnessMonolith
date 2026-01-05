@@ -5,12 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Builder;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class RecommendationResponse{
+    private String id;
     private String userId;
     private String activityId;
     private String type;
