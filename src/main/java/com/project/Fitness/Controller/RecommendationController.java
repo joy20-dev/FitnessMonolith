@@ -35,7 +35,7 @@ public class RecommendationController {
     @GetMapping("/activity/{activityId}")
     public ResponseEntity<List<RecommendationResponse>> getRecommendationsByActivity(@PathVariable String activityId){
         return ResponseEntity.ok(recommendationService.getRecommendationsByActivity(activityId));
-    }
+    } 
 
     @PostMapping("/generate")
     public ResponseEntity<RecommendationResponse> generateRecommendation(@RequestBody RecommendationRequest request) {
