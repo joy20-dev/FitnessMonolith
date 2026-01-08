@@ -10,6 +10,7 @@ import com.project.Fitness.DTO.RegisterRequest;
 import com.project.Fitness.DTO.UserResponse;
 import com.project.Fitness.Models.Users;
 import com.project.Fitness.Repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 import lombok.RequiredArgsConstructor;
@@ -21,15 +22,21 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	
 	private final UserRepository userRepository;
+	private final PasswordEncoder encoder;
+
+
+	
 
 	public UserResponse register(RegisterRequest registerReq) {
 		// TODO Auto-generated method stub
 		
 		Users user = Users.builder()
+		
 					.email(registerReq.getEmail())
-					.password(registerReq.getPassword())
+					.password(encoder.encode(registerReq.getPassword()))
 					.firstName(registerReq.getFirstName())
 					.lastName(registerReq.getLastName())
+					.role(registerReq.getRole())
 					.build();
 		
 		
@@ -58,6 +65,7 @@ public class UserService {
 				user.getFirstName(),
 				user.getLastName(),
 				user.getPassword(),
+				user.getRole(),
 				user.getCreatedAt(),
 				user.getUpdatedAt());
 		return response;

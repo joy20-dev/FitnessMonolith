@@ -11,6 +11,7 @@ import com.project.Fitness.Repository.RecommendationRepository;
 import com.project.Fitness.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
+
 @Service
 @RequiredArgsConstructor
 public class RecommendationService {

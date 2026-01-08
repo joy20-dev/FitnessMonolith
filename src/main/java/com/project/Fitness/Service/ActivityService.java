@@ -26,6 +26,7 @@ public class ActivityService {
 
 		
 		Users user = userRepo.findById(trackActivity.getUserId()).orElseThrow(() -> new RuntimeException("user not found"));  //created for testing the api
+		System.out.println(trackActivity.getAdditionalMetrics());
 		Activity act = Activity.builder()
 				.duration(trackActivity.getDuration())
 				.caloriesBurned(trackActivity.getCaloriesBurned())
